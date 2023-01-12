@@ -16,7 +16,7 @@
                 class="block mt-1 rounded-md border-gray-300 w-full @error('libelle')
             border-red-500 bg-red-100 animate-bounce
         @enderror"
-                wire:model="libelle">
+                wire:model="libelle" name="libelle">
 
             @error('libelle')
                 <div class="text text-red-500 mt-1">*Le champ libelle est requis</div>
