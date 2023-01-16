@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ProfileController;
@@ -39,6 +40,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/create-school-year', [SchoolYearController::class, 'create'])->name('settings.create_school_year');
 
         Route::get('/create-level', [LevelsController::class, 'create'])->name('settings.create_levels');
+
+        Route::get('/edit-level/{level}', [LevelsController::class, 'edit'])->name('settings.edit_level');
+    });
+
+    Route::prefix('classes')->group(function () {
+        Route::get('/', [ClassController::class, 'index'])->name('classes');
+        Route::get('/create', [ClassController::class, 'create'])->name('classes.create');
+        Route::get('/edit/{classe}', [ClassController::class, 'edit'])->name('classes.edit');
     });
 });
 

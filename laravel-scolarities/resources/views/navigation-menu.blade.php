@@ -19,6 +19,9 @@
                     <x-jet-nav-link href="{{ route('niveaux') }}" :active="request()->routeIs('niveaux')">
                         {{ __('Niveaux') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('classes') }}" :active="request()->routeIs('classes')">
+                        {{ __('Classes') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('settings') }}" :active="request()->routeIs('settings')">
                         {{ __('Année Scolaire') }}
                     </x-jet-nav-link>
