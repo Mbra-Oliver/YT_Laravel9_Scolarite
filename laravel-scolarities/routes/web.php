@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\AttributionController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\NiveauController;
+use App\Http\Controllers\ParentController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\StudentController;
+use App\Mail\HelloMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+ 
     return view('welcome');
 });
 
@@ -48,6 +55,33 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [ClassController::class, 'index'])->name('classes');
         Route::get('/create', [ClassController::class, 'create'])->name('classes.create');
         Route::get('/edit/{classe}', [ClassController::class, 'edit'])->name('classes.edit');
+    });
+
+    //ROutes pour intérragir avec les élèves
+
+    Route::prefix('eleves')->group(function () {
+        Route::get('/', [StudentController::class, 'index'])->name('students');
+        Route::get('/create', [StudentController::class, 'create'])->name('students.create');
+        Route::get('/edit/{student}', [StudentController::class, 'edit'])->name('students.edit');
+        Route::get('/{student}', [StudentController::class, 'show'])->name('students.show');
+    });
+
+    Route::prefix('inscriptions')->group(function () {
+        Route::get('/', [AttributionController::class, 'index'])->name('inscriptions');
+        Route::get('/create', [AttributionController::class, 'create'])->name('inscriptions.create');
+        Route::get('/edit/{attribution}', [AttributionController::class, 'edit'])->name('inscriptions.edit');
+    });
+
+    Route::prefix('payments')->group(function () {
+        Route::get('/', [PaymentController::class, 'index'])->name('payments');
+        Route::get('/create', [PaymentController::class, 'create'])->name('payments.create');
+        Route::get('/edit/{payment}', [PaymentController::class, 'edit'])->name('payments.edit');
+    });
+
+
+    Route::prefix('parents')->group(function () {
+        Route::get('/', [ParentController::class, 'index'])->name('parents');
+        Route::get('/create', [ParentController::class, 'create'])->name('parents.create');
     });
 });
 

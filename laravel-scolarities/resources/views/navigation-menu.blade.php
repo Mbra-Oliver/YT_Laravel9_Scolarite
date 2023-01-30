@@ -15,6 +15,17 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('inscriptions') }}" :active="request()->routeIs('inscriptions')">
+                        {{ __('Inscriptions') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('parents') }}" :active="request()->routeIs('parents')">
+                        {{ __('Parents') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('students') }}" :active="request()->routeIs('students')">
+                        {{ __('Eleves') }}
+                    </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('niveaux') }}" :active="request()->routeIs('niveaux')">
                         {{ __('Niveaux') }}
@@ -25,6 +36,13 @@
                     <x-jet-nav-link href="{{ route('settings') }}" :active="request()->routeIs('settings')">
                         {{ __('Année Scolaire') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('payments') }}" :active="request()->routeIs('payments')">
+                        {{ __('Paiements') }}
+                    </x-jet-nav-link>
+
+
+
                 </div>
             </div>
 
