@@ -57,7 +57,9 @@
                                             {{ $item->contact_parent }}
                                         </td>
 
-                                        <td class="flex">
+                                        <td class="flex justify-self-stretch justify-items-center mt-4" style="display:flex; gap:1rem; align-self:flex-end">
+                                            <a href="{{ route('students.show', $item->id) }}"
+                                                class="text-sm bg-green-500 p-1 text-white rounded-sm">Voir</a>
                                             <a href="{{ route('students.edit', $item->id) }}"
                                                 class="text-sm bg-blue-500 p-1 text-white rounded-sm">Modifier</a>
                                             <div wire:click="delete({{ $item->id }})"

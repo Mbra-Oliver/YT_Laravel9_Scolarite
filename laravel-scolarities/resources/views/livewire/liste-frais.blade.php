@@ -8,8 +8,8 @@
                 <input type="text" class="block mt-1 rounded-md border-gray-300 w-full " placeholder="Rechercher"
                     wire:model="search">
             </div>
-            <a href="{{ route('settings.create_levels') }}" class="bg-blue-500 rounded-md p-2 text-sm text-white">
-                Ajouter niveau</a>
+            <a href="{{ route('fees.create') }}" class="bg-blue-500 rounded-md p-2 text-sm text-white">
+                Ajouter un nouveau frais de scolarité</a>
         </div>
 
 
@@ -34,25 +34,25 @@
                         <table class="min-w-full text-center">
 
                             <thead class="border-b bg-gray-50">
-                                <tr style="vertical-align:middle">
-                                    <th class="text-sm font-medium text-gray-900 px-6 py-6">id</th>
-                                    <th class="text-sm font-medium text-gray-900 px-6 py-6">Code</th>
-                                    <th class="text-sm font-medium text-gray-900 px-6 py-6">Libelle</th>
+                                <tr>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-6">Année scolaire</th>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-6">Niveau</th>
                                     <th class="text-sm font-medium text-gray-900 px-6 py-6">Montant Scolarité</th>
                                     <th class="text-sm font-medium text-gray-900 ">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($levels as $item)
-                                    <tr class="border-b-2 border-gray-100" style="vertical-align:middle">
-                                        <td class="text-sm font-medium text-gray-900 px-6 py-6">{{ $item->id }}</td>
-                                        <td class="text-sm font-medium text-gray-900 px-6 py-6">{{ $item->code }}</td>
-                                        <td class="text-sm font-medium text-gray-900 px-6 py-6">{{ $item->libelle }}
-                                        </td>
+                                @forelse ($fees as $item)
+                                    <tr class="border-b-2 border-gray-100">
                                         <td class="text-sm font-medium text-gray-900 px-6 py-6">
-                                            {{ $this->getScolaritieAmount($item->id) }}
+                                            {{ $item->schoolyear->school_year }}</td>
+                                        <td class="text-sm font-medium text-gray-900 px-6 py-6">
+                                            {{ $item->level->libelle }}
                                         </td>
-                                        <td class="flex items-center justify-center" style="vertical-align:middle">
+                                    
+                                        <td class="text-sm font-medium text-gray-900 px-6 py-6">{{ $item->scolarite }}
+                                        </td>
+                                        <td class="flex">
                                             <a href="{{ route('settings.edit_level', $item->id) }}"
                                                 class="text-sm bg-blue-500 p-1 text-white rounded-sm">Modifier</a>
                                             <div wire:click="delete({{ $item->id }})"
@@ -78,7 +78,7 @@
                         </table>
 
                         <div class="mt-3">
-                            {{ $levels->links() }}
+                            {{ $fees->links() }}
                         </div>
                     </div>
                 </div>

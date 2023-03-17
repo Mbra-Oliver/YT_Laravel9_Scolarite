@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_parents', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email');
-            $table->string('contact');
-            $table->timestamps();
-
+        Schema::table('levels', function (Blueprint $table) {
+            $table->dropColumn('scolarite');
+            $table->dropColumn('school_year_id');
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_parents');
+        //
     }
 };

@@ -1,14 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
-
-use App\Mail\ParentMailNotify;
-use App\Models\StudentParent;
-use App\Notifications\ParentRegistration;
-use App\Notifications\ParentRegistrationEmailNotification;
+use App\Models\Family;
 use App\Notifications\SendParentRegistrationNotification;
 use Exception;
-use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class CreateParent extends Component
@@ -18,10 +13,10 @@ class CreateParent extends Component
     public $prenom;
     public $contact;
 
-    public function store(StudentParent $parent)
+    public function store(Family $parent)
     {
         $this->validate([
-            'email' => 'email|required|unique:student_parents,email',
+            'email' => 'email|required|unique:parents,email',
             'nom' => 'string|required',
             'prenom' => 'string|required',
             'contact' => 'string|required',

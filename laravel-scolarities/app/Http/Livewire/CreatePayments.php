@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Attribution;
 use App\Models\Classe;
 use App\Models\Payment;
+use App\Models\SchoolFees;
 use App\Models\SchoolYear;
 use App\Models\Student;
 use Exception;
@@ -37,8 +38,11 @@ class CreatePayments extends Component
 
         $classData = Classe::with('level')->find($studentClasseId);
 
-        $montantScolarite = $classData->level->scolarite;
+        $studentLevelId = $classData->level->id;
 
+        $query = SchoolFees::where('level_id', $studentLevelId)->where('school_year_id', $activeSchoolYear->id)->first();
+
+        $montantScolarite = $query->montant;
 
 
         //Cond 2: Faire le cumul des paiements déja efectué et le comparer au montant de la scolarité

@@ -41,6 +41,10 @@
                         {{ __('Paiements') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('fees') }}" :active="request()->routeIs('fees')">
+                        {{ __('Frais de scolarité') }}
+                    </x-jet-nav-link>
+
 
 
                 </div>

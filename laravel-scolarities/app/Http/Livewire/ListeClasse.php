@@ -30,7 +30,7 @@ class ListeClasse extends Component
 
             $activeSchoolYear = SchoolYear::where('active', '1')->first();
 
-            $classesList = Classe::with('level')->whereRelation('level', 'school_year_id', $activeSchoolYear->id)->paginate(10);
+            $classesList = Classe::with('level')->paginate(10);
         }
 
 

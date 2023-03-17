@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttributionController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\FeesController;
 use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ParentController;
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
- 
+
     return view('welcome');
 });
 
@@ -82,6 +83,13 @@ Route::middleware('auth')->group(function () {
     Route::prefix('parents')->group(function () {
         Route::get('/', [ParentController::class, 'index'])->name('parents');
         Route::get('/create', [ParentController::class, 'create'])->name('parents.create');
+    });
+
+
+    Route::prefix('frais')->group(function () {
+        Route::get('/', [FeesController::class, 'index'])->name('fees');
+        Route::get('/create', [FeesController::class, 'create'])->name('fees.create');
+        Route::get('/edit/{fee}', [FeesController::class, 'edit'])->name('fees.edit');
     });
 });
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\StudentParent;
+use App\Models\Family;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -14,7 +14,7 @@ class ListeParent extends Component
     public $search = '';
 
 
-    public function delete(StudentParent $parent)
+    public function delete(Family $parent)
     {
         $parent->delete();
         return redirect()->route('students')->with('success', 'Parent d\'élève supprimé');
@@ -25,12 +25,12 @@ class ListeParent extends Component
     {
 
         if (!empty($this->search)) {
-            $parents = StudentParent::where('nom', 'like', '%' . $this->search . '%')->orWhere('prenom', 'like', '%' . $this->search . '%')->orWhere('email', 'like', '%' . $this->search . '%')->paginate(10);
+            $parents = Family::where('nom', 'like', '%' . $this->search . '%')->orWhere('prenom', 'like', '%' . $this->search . '%')->orWhere('email', 'like', '%' . $this->search . '%')->paginate(10);
         } else {
 
 
 
-            $parents = StudentParent::paginate(10);
+            $parents = Family::paginate(10);
         }
 
         return view('livewire.liste-parent', compact('parents'));

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
     use HasFactory;
+    protected $guarded = [''];
+
+    public function schoolFees()
+    {
+        return $this->hasMany(SchoolFees::class);
+    }
 }
